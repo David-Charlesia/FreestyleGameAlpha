@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".controller.GameActivity"
+    android:layout_above="@+id/bottom_navigation_ingame"
+    android:background="@color/background_gray">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:title="onFreestyle"
+        app:titleTextColor="@color/text_normal"
+        app:titleTextAppearance="@style/FreestyleBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:id="@+id/linear"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/toolbar_main"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/word_1"
+            style="@style/GameWord.Theme"/>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="3"
+            android:gravity="center_horizontal"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/word_2"
+                style="@style/GameWord"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/word_3"
+                style="@style/GameWord"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/word_4"
+                style="@style/GameWord"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/word_5"
+                style="@style/GameWord"/>
+
+        </GridLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_text"
+            style="@style/GameWordOther"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/current_player"
+                android:gravity="center_horizontal"
+                style="@style/GameWordOther"
+                android:padding="@dimen/padding_normal" />
+            
+            <ImageView
+                android:id="@+id/current_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="@dimen/padding_normal"
+                android:visibility="gone"
+                android:src="@drawable/mic_player"/>
+            
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="40dp">
+            <ImageButton
+                android:id="@+id/loose"
+                android:src="@drawable/loose"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible"
+                android:layout_marginEnd="15dp"/>
+
+            <ImageButton
+                android:id="@+id/win"
+                android:src="@drawable/win"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible"
+                android:layout_marginStart="15dp" />
+        </GridLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress_bar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/launch"
+            android:id="@+id/launch_game"
+            android:layout_margin="30dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/gif"
+        android:id="@+id/layout_next"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/next_player"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginEnd="@dimen/padding_normal"
+            android:src="@drawable/next_player_orange_long"
+            android:layout_toEndOf="@+id/next_player_textview" />
+
+        <TextView
+            android:id="@+id/next_player_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            style="@style/GameWordOther" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/countdown"
+            android:paddingRight="@dimen/padding_normal"
+            style="@style/GameWordOther.count"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/next_player_textview" />
+
+    </RelativeLayout>
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/equalizer3"
+        android:layout_alignBottom="@id/bottom_navigation_ingame"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_ingame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_ingame"
+        app:itemTextAppearanceInactive="@style/FreestyleBar"
+        app:itemTextAppearanceActive="@style/FreestyleBar"/>
+
+
+
+</RelativeLayout>
